@@ -1,0 +1,78 @@
+dog(flash).
+dog(rover).
+cat(butsi).
+horse(star).
+
+
+color(flash,black).
+color(butsi,brown).
+color(rover,red).
+color(star,white).
+
+pet(X):-
+    dog(X);cat(X).
+animal(X):-
+    pet(X).
+animal(X):-
+    horse(X).
+
+owns(tom, Dog):-
+    dog(Dog),
+   \+ color(Dog, black).
+
+owns(kate, Ani):-
+    horse(Ani);
+animal(Ani),
+color(Ani,black).
+
+
+%‘лэш Ч собака. Pовеp Ч собака. Ѕутси Ч кошка. —таp Ч
+%лошадь. ‘лэш чеpна€. Ѕутси коpичнева€. Pевеp pыжа€. —таp
+% бела€. ƒомашнее животное Ч собака или кошка. ∆ивотное Ч домашнее
+% животное или лошадь. ” “ома есть собака
+%не чеpного цвета. ”  ейта есть лошадь или что-то чеpного
+%цвета.
+%«апросы:
+%Х Pовеp рыжа€?
+%Х ќпpеделить клички всех собак.
+%Х ќпpеделить владельцев чего-либо.
+%Х ќпpеделить владельцев животных небелого цвета.
+%
+%% c:/users/lev/documents/prolog/bgh compiled 0.00 sec, 0 clauses
+?- animals(Ani),\+owns(_,Ani).
+Correct to: "animal(Ani)"? yes
+Ani = butsi ;
+false.
+
+?- dog(Name).
+Name = flash ;
+Name = rover.
+
+?- owns(Owner, What).
+Owner = tom,
+What = rover ;
+Owner = kate,
+What = star ;
+Owner = kate,
+What = flash ;
+false.
+
+?-  animal(What),owns(Owner,What),\+color(What,white).
+What = flash,
+Owner = kate ;
+What = rover,
+Owner = tom ;
+false.
+
+?- animals(Ani),\+owns(_,Ani).
+Correct to: "animal(Ani)"? yes
+Ani = butsi ;
+false.
+
+?- 
+%
+%
+%
+%
+
+
